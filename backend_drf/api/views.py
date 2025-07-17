@@ -7,9 +7,11 @@ from doctor.models import Doctor
 from doctor.serializers import DoctorSerializer
 from staff.models import Staff
 from staff.serializers import StaffSerializer
+from rest_framework.permissions import IsAuthenticated
 
 class PatientViewSet(APIView):
-
+    permission_classes = [IsAuthenticated]
+    
     def get(self, request):
         patient = Patient.objects.all()
         serializer = PatientSerializer(patient, many=True)
