@@ -1,14 +1,62 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+	font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+	color-scheme: light dark;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.login-container {
+	background-color: #242424;
+	color: aliceblue;
+	min-height: 100vh;
+	max-width: 100%;
+	margin: auto;
+	align-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.login-info{
+	background-color: #4b4a4a;
+	padding: 40px;
+    border-radius: 5px;
+}
+.login-info h1 {
+	text-align: center;
+	margin-bottom: 40px;
+}
+.login-info input {
+	width: 100%;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #6b6b6b;
+    border-radius: 5px;
+    font-size: 15px;
+}
+.login-info button {
+    background-color: #3b3b3b;
+    border: 1px solid #6b6b6b;
+    padding: 7px;
+    margin: auto;
+    display: block;
+    border-radius: 5px;
+	cursor: pointer;
+}
+
+.login-info .error-message {
+	color: #ed4646;
+    margin-top: 10px;
+    background-color: #ffc4c4;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
 }
