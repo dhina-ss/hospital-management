@@ -7,7 +7,7 @@ class PatientSerializer(serializers.ModelSerializer):
         fields = '__all__'
         read_only_fields = ['age']
 
-    def validate_contact_number(self, value):
+    def validate_mobilenumber(self, value):
         if not value.isdigit() or len(value) < 10:
             raise serializers.ValidationError("Contact number must be numeric and at least 10 digits long.")
         return value

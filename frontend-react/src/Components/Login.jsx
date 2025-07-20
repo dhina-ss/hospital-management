@@ -1,7 +1,9 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import {useState, useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
+import Spinner from 'react-bootstrap/Spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -13,6 +15,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -23,18 +26,28 @@ const Login = () => {
             localStorage.setItem('access', response.data.access);
             localStorage.setItem('refresh', response.data.refresh);
             setError('');
+            navigate('/');
         }catch(error) {
+            localStorage.removeItem('access');
+            localStorage.removeItem('refresh');
             setError('Login failed. Please check your credentials.');
         }finally{
             setIsLoading(false);
         }
     }
 
+    useEffect(() =>{
+        const accessToken = localStorage.getItem('access');
+        if (accessToken) {
+            navigate('/dashboard');
+        }
+    }, [])
+
     return (
         <>
             <div className="login-container">
                 <div className="login-info">
-                    <h1>Sign in with email</h1>
+                    <h1>Sign in</h1>
                     <form onSubmit={handleLogin}>
                         <input type="text" className='mb-md-3' placeholder='Username' value={username} onChange={(e)=>{setUsername(e.target.value)}}/>
                         <div className="input-field" style={{ position: 'relative' }}>
@@ -44,7 +57,7 @@ const Login = () => {
                                     cursor: 'pointer', color: '#6b6b6b'}} />
                         </div>
                         {error && <p className="error-message">{error}</p>}
-                        <button className='mt-md-3'>{isLoading && <FontAwesomeIcon icon={faSpinner}/>} Login</button>
+                        <button className='mt-md-3'>{isLoading && <Spinner animation="border" size="sm" role="status"></Spinner>} Login</button>
                     </form>
                 </div>
             </div>

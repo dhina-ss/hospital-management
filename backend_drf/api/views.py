@@ -7,22 +7,21 @@ from doctor.models import Doctor
 from doctor.serializers import DoctorSerializer
 from staff.models import Staff
 from staff.serializers import StaffSerializer
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
+class ProtectedViewSet(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        return Response({"message": "This is a protected view"}, status=status.HTTP_200_OK)
+    
 class PatientViewSet(APIView):
     permission_classes = [IsAuthenticated]
-    
+
     def get(self, request):
         patient = Patient.objects.all()
         serializer = PatientSerializer(patient, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-
-    def post(self, request):
-        serializer = PatientSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({"message": "Patient added successfully"}, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def update(self, request, pk=None):
         try:
@@ -34,6 +33,16 @@ class PatientViewSet(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response({"message": "Patient updated successfully"}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class PatientRegisterSet(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        serializer = PatientSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "Patient added successfully"}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class DoctorViewSet(APIView):

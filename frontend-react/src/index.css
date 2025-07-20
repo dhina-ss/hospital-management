@@ -13,19 +13,52 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.login-container {
+body{
 	background-color: #242424;
-	color: aliceblue;
+	color: rgba(255, 255, 255, 0.87);
 	min-height: 100vh;
 	max-width: 100%;
+}
+
+/* Header */
+.header{
+	display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px 0;
+	/* border-bottom: 1px solid #6d6d6d; */
+}
+
+.head-link{
+	display: flex;
+	gap: 10px;
+}
+
+.header button{
+	background-color: #4b4a4a;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 10px;
+	cursor: pointer;
+	font-weight: 500;
+}
+
+.header button:hover{
+	background-color: #5f5f5f;
+	transition: all 0.3s ease-in-out;
+}
+
+/* Login */
+.login-container {
 	margin: auto;
-	align-content: center;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin: 5rem 0;
 }
 
 .login-info{
+	width: 40%;
 	background-color: #4b4a4a;
 	padding: 40px;
     border-radius: 5px;
@@ -34,22 +67,27 @@
 	text-align: center;
 	margin-bottom: 40px;
 }
-.login-info input {
+.login-info input, .login-info select {
 	width: 100%;
     padding: 10px;
     outline: none;
     border: 1px solid #6b6b6b;
     border-radius: 5px;
     font-size: 15px;
+	letter-spacing: 1px;
+}
+.login-info input::placeholder{
+	color: rgba(255, 255, 255, 0.87)
 }
 .login-info button {
     background-color: #3b3b3b;
     border: 1px solid #6b6b6b;
-    padding: 7px;
+    padding: 7px 15px;
     margin: auto;
     display: block;
     border-radius: 5px;
 	cursor: pointer;
+	font-weight: 500;
 }
 
 .login-info .error-message {
@@ -59,4 +97,93 @@
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 14px;
+}
+
+/* Register */
+.register-info{
+	width: 60%;
+}
+
+.register-info input, .register-info select{
+	width: 49%;
+}
+
+/* Footer */
+.footer{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	padding: 10px 0;
+	border-top: 1px solid #6d6d6d;
+}
+.footer .dev-name{
+	color: aquamarine;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+/* Dashboard */
+.dashboard-container{
+	background-color: beige;
+}
+.dashboard-container .row{
+	min-height: 85vh;
+	color: #242424;
+	margin: 0;
+}
+.menu-links a{
+	display: block;
+    color: #242424;
+    text-decoration: none;
+	padding: 10px 20px;
+	border-bottom: 1px solid #5b5a5a;
+	font-weight: 500;
+	cursor: pointer;
+}
+.menu-links a:hover{
+	background-color: #9fa09f;
+	transition: all .1s ease-in-out;
+}
+.menu-active{
+	background-color: #9fa09f;
+}
+.menu-title{
+	display: flex;
+    align-items: center;
+    gap: 5px;
+	padding: 10px 20px;
+	background-color: #068488;
+	color: beige;
+}
+.menu-title h2{
+	font-size: 25px;
+}
+.menu-bar{
+	background-color: #cecece;
+	padding: 0;
+}
+.dashboard-content .chart-img{
+	padding: 20px;
+	overflow: hidden;
+}
+.dashboard-content .chart-img img{
+	width: 100%;
+	border-radius: 5px;
+}
+
+/* Patients */
+.patient-container{
+	padding: 20px;
+}
+.patient-title{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+table{
+	width: 100%;
+}
+th, td{
+	border: 1px solid;
+	padding: 5px 10px;
 }

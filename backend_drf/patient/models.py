@@ -8,13 +8,13 @@ class Patient(models.Model):
         ('Other', 'Other'),
     ]
 
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
+    username = models.CharField(max_length=30)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
-    date_of_birth = models.DateField()
+    dateofbirth = models.DateField()
     age = models.IntegerField(blank=True, null=True)
     email = models.EmailField(unique=True)
-    phone_number = models.CharField(max_length=15, blank=True, null=True)
+    mobilenumber = models.CharField(max_length=15, blank=True, null=True)
+    password = models.CharField(max_length=20, default='1234')
     assigned_doctor = models.ForeignKey('doctor.Doctor', on_delete=models.SET_NULL, null=True, blank=True)
     appointment_date = models.DateField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -22,14 +22,14 @@ class Patient(models.Model):
 
     def __str__(self):
         prefix = "Mr" if self.gender == 'Male' else "Mrs"
-        return f"{prefix}. {self.first_name} {self.last_name}"
+        return f"{prefix}. {self.username}"
 
     def calculate_age(self):
         today = date.today()
-        birth_date = self.date_of_birth
+        birth_date = self.dateofbirth
         return today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
 
     def save(self, *args, **kwargs):
-        if self.date_of_birth:
+        if self.dateofbirth:
             self.age = self.calculate_age()
         super().save(*args, **kwargs)
