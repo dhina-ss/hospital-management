@@ -13,7 +13,7 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-body{
+body {
 	background-color: #242424;
 	color: rgba(255, 255, 255, 0.87);
 	min-height: 100vh;
@@ -21,29 +21,29 @@ body{
 }
 
 /* Header */
-.header{
+.header {
 	display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 5px 0;
+	align-items: center;
+	justify-content: space-around;
+	padding: 5px 0;
 	/* border-bottom: 1px solid #6d6d6d; */
 }
 
-.head-link{
+.head-link {
 	display: flex;
 	gap: 10px;
 }
 
-.header button{
+.header button {
 	background-color: #4b4a4a;
-    border: none;
-    border-radius: 5px;
-    padding: 7px 10px;
+	border: none;
+	border-radius: 5px;
+	padding: 7px 10px;
 	cursor: pointer;
 	font-weight: 500;
 }
 
-.header button:hover{
+.header button:hover {
 	background-color: #5f5f5f;
 	transition: all 0.3s ease-in-out;
 }
@@ -57,133 +57,325 @@ body{
 	margin: 5rem 0;
 }
 
-.login-info{
+.login-info {
 	width: 40%;
 	background-color: #4b4a4a;
 	padding: 40px;
-    border-radius: 5px;
+	border-radius: 5px;
 }
+
 .login-info h1 {
 	text-align: center;
 	margin-bottom: 40px;
 }
-.login-info input, .login-info select {
+
+.login-info input,
+.login-info select {
 	width: 100%;
-    padding: 10px;
-    outline: none;
-    border: 1px solid #6b6b6b;
-    border-radius: 5px;
-    font-size: 15px;
+	padding: 10px;
+	outline: none;
+	border: 1px solid #6b6b6b;
+	border-radius: 5px;
+	font-size: 15px;
 	letter-spacing: 1px;
 }
-.login-info input::placeholder{
+
+.login-info input::placeholder {
 	color: rgba(255, 255, 255, 0.87)
 }
+
 .login-info button {
-    background-color: #3b3b3b;
-    border: 1px solid #6b6b6b;
-    padding: 7px 15px;
-    margin: auto;
-    display: block;
-    border-radius: 5px;
+	background-color: #3b3b3b;
+	border: 1px solid #6b6b6b;
+	padding: 7px 15px;
+	margin: auto;
+	display: block;
+	border-radius: 5px;
 	cursor: pointer;
 	font-weight: 500;
 }
 
 .login-info .error-message {
 	color: #ed4646;
-    margin-top: 10px;
-    background-color: #ffc4c4;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
+	margin-top: 10px;
+	background-color: #ffc4c4;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: 14px;
 }
 
 /* Register */
-.register-info{
+.register-info {
 	width: 60%;
 }
 
-.register-info input, .register-info select{
+.register-info input,
+.register-info select {
 	width: 49%;
 }
 
 /* Footer */
-.footer{
+.footer {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
 	padding: 10px 0;
 	border-top: 1px solid #6d6d6d;
 }
-.footer .dev-name{
+
+.footer .dev-name {
 	color: aquamarine;
 	font-weight: 500;
 	cursor: pointer;
 }
 
 /* Dashboard */
-.dashboard-container{
+.dashboard-container {
 	background-color: beige;
 }
-.dashboard-container .row{
+
+.dashboard-container .row {
 	min-height: 85vh;
 	color: #242424;
 	margin: 0;
 }
-.menu-links a{
+
+.menu-links a {
 	display: block;
-    color: #242424;
-    text-decoration: none;
+	color: #242424;
+	text-decoration: none;
 	padding: 10px 20px;
 	border-bottom: 1px solid #5b5a5a;
 	font-weight: 500;
 	cursor: pointer;
 }
-.menu-links a:hover{
+
+.menu-links a:hover {
 	background-color: #9fa09f;
 	transition: all .1s ease-in-out;
 }
-.menu-active{
+
+.menu-active {
 	background-color: #9fa09f;
 }
-.menu-title{
+
+.menu-title {
 	display: flex;
-    align-items: center;
-    gap: 5px;
+	align-items: center;
+	gap: 5px;
 	padding: 10px 20px;
 	background-color: #068488;
 	color: beige;
 }
-.menu-title h2{
+
+.menu-title h2 {
 	font-size: 25px;
 }
-.menu-bar{
+
+.menu-bar {
 	background-color: #cecece;
 	padding: 0;
+	border-right: 3px solid #767070;
 }
-.dashboard-content .chart-img{
+
+.dashboard-content .chart-img {
 	padding: 20px;
 	overflow: hidden;
 }
-.dashboard-content .chart-img img{
+
+.dashboard-content .chart-img img {
 	width: 100%;
 	border-radius: 5px;
 }
 
+.menu-content {
+	position: relative;
+}
+
 /* Patients */
-.patient-container{
+.patient-container {
 	padding: 20px;
 }
-.patient-title{
+
+.patient-title {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 15px;
 }
-table{
+
+table {
 	width: 100%;
 }
-th, td{
+
+th,
+td {
 	border: 1px solid;
 	padding: 5px 10px;
+	text-align: center;
+}
+
+/* Patient Details */
+
+.breadcrumb {
+	gap: 6px;
+	align-items: center;
+	background-color: #d3d3d3;
+	padding: 10px;
+}
+
+.breadcrumb a {
+	font-size: 16px;
+}
+
+.patient-details-container form {
+	padding: 10px 70px;
+}
+
+.patient-details-container label {
+	margin-right: 30px;
+	width: 20%;
+}
+
+.patient-details-container .input-group {
+	align-items: center;
+	font-size: 16px;
+}
+
+.patient-details-container input,
+.patient-details-container textarea {
+	outline: none;
+	background-color: transparent;
+	border: 1px solid #d3d3d3;
+	color: #3b3b3b;
+	padding: 5px;
+	width: 50%;
+}
+
+.patient-details-container input[type="date"]::-webkit-calendar-picker-indicator {
+	cursor: pointer;
+	filter: invert(0.8);
+}
+
+/* Doctor Availability */
+
+.react-calendar {
+	background-color: #dbdbdb !important;
+	padding: 3px !important;
+	border-radius: 5px !important;
+}
+
+.available-date {
+	background-color: #54547b !important;
+    color: #ffffff !important;
+	border-radius: 25% !important;
+	width: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: not-allowed !important;
+}
+.react-calendar__tile--active {
+	background: #22750e !important;
+    color: white !important;
+}
+.react-calendar__tile--now {
+	background: #006edc !important;
+	color: #fff !important;
+}
+.react-calendar__tile {
+	height: 3rem !important;
+	margin-bottom: 3px !important;
+}
+
+.react-calendar__tile--active,
+.react-calendar__tile--now {
+	border-radius: 25% !important;
+}
+
+.react-calendar__navigation__arrow,
+.react-calendar__navigation__label {
+	color: #525252;
+	font-weight: 600;
+}
+.react-calendar__tile:enabled:hover:not(.available-date),
+.react-calendar__tile:enabled:focus:not(.available-date)
+.react-calendar__navigation__arrow:enabled:hover {
+	background-color: #b9b9b9 !important;
+	border-radius: 25% !important;
+}
+.react-calendar__month-view__days__day{
+	color: #525252;
+}
+.react-calendar__month-view__days__day--neighboringMonth{
+	color: #a7a7a7 !important;
+}
+.react-calendar__navigation__label:hover {
+	border-radius: 10px !important;
+	background-color: #b9b9b9 !important;
+}
+
+.doctorlist {
+	width: 350px;
+	padding: 10px;
+	background-color: #dbdbdb;
+	border-radius: 5px;
+	color: #242424;
+	margin-bottom: 10px;
+	font-size: 17px;
+	outline: none;
+}
+.doctor-availability-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.doctor-availability-row {
+	position: absolute;
+	width: 100%;
+    min-height: 100vh;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    background-color: #717171d4;
+    z-index: 99;
+	top: 0;
+}
+.color-details{
+	position: absolute;
+    top: 20%;
+    right: 0;
+    display: grid;
+    z-index: 99;
+    color: #525252;
+    background-color: #dbdbdb;
+	padding: 10px;
+	gap: 10px;
+}
+.color{
+	display: flex;
+	gap: 5px;
+	align-items: center;
+}
+.avail-color{
+	width: 20px;
+    height: 20px;
+    background-color: #b9b9b9;
+}
+.select-color{
+	background-color: #53547b;
+}
+.today-color{
+	background-color: #006edc;
+}
+.close-btn{
+	position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.close-btn svg{
+	font-size: 30px;
+}
+.close-btn svg:hover{
+	cursor: pointer;
+    color: #d5d5d5;
 }

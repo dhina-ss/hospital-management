@@ -5,6 +5,7 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import Register from "./Components/Register";
+import PatientDetails from "./Components/PatientDetails";
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 					<Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/register" element={<Register />} />
+					<Route path="/patient/:id" element={<PatientDetails />} />
 				</Routes>
 				<Footer />
 			</BrowserRouter>

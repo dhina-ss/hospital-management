@@ -1,3 +1,4 @@
+from django.http import Http404
 from rest_framework.views import APIView
 from patient.serializers import PatientSerializer
 from patient.models import Patient
@@ -23,12 +24,22 @@ class PatientViewSet(APIView):
         serializer = PatientSerializer(patient, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
-    def update(self, request, pk=None):
-        try:
-            patient = Patient.objects.get(pk=pk)
-        except Patient.DoesNotExist:
-            return Response({"error": "Patient not found"}, status=status.HTTP_404_NOT_FOUND)
+class PatientDetailsViewSet(APIView):
+    permission_classes = [IsAuthenticated]
 
+    def get_object(self, pk):
+        try:
+            return Patient.objects.get(pk=pk)
+        except Patient.DoesNotExist:
+            raise Http404
+    
+    def get(self, request, pk):
+        patient = self.get_object(pk)
+        serializer = PatientSerializer(patient)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    def put(self, request, pk=None):
+        patient = self.get_object(pk)
         serializer = PatientSerializer(patient, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
