@@ -4,8 +4,8 @@ from patient.serializers import PatientSerializer
 from patient.models import Patient
 from rest_framework.response import Response
 from rest_framework import status
-from doctor.models import Doctor
-from doctor.serializers import DoctorSerializer
+from doctor.models import Doctor, DoctorAppointment
+from doctor.serializers import DoctorSerializer, DoctorAppointmentSerializer
 from staff.models import Staff
 from staff.serializers import StaffSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -57,6 +57,7 @@ class PatientRegisterSet(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class DoctorViewSet(APIView):
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         doctor = Doctor.objects.all()
@@ -65,6 +66,21 @@ class DoctorViewSet(APIView):
 
     def post(self, request):
         serializer = DoctorSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "Doctor added successfully"}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class DoctorAppointmentViewSet(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        doctor_appointment = DoctorAppointment.objects.all()
+        serializer = DoctorAppointmentSerializer(doctor_appointment, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request):
+        serializer = DoctorAppointmentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response({"message": "Doctor added successfully"}, status=status.HTTP_201_CREATED)

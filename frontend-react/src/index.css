@@ -263,17 +263,6 @@ td {
 	padding: 3px !important;
 	border-radius: 5px !important;
 }
-
-.available-date {
-	background-color: #54547b !important;
-    color: #ffffff !important;
-	border-radius: 25% !important;
-	width: 1rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: not-allowed !important;
-}
 .react-calendar__tile--active {
 	background: #22750e !important;
     color: white !important;
@@ -281,6 +270,16 @@ td {
 .react-calendar__tile--now {
 	background: #006edc !important;
 	color: #fff !important;
+}
+.available-date {
+	background-color: #54547b !important;
+	color: #ffffff !important;
+	border-radius: 25% !important;
+	width: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: not-allowed !important;
 }
 .react-calendar__tile {
 	height: 3rem !important;
@@ -332,7 +331,7 @@ td {
 .doctor-availability-row {
 	position: absolute;
 	width: 100%;
-    min-height: 100vh;
+    min-height: 110vh;
     display: grid;
     align-content: center;
     justify-content: center;

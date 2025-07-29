@@ -37,3 +37,12 @@ class Doctor(models.Model):
         if self.date_of_birth:
             self.age = self.calculate_age()
         super().save(*args, **kwargs)
+
+class DoctorAppointment(models.Model):
+    doctor = models.ForeignKey('Doctor', on_delete=models.CASCADE, related_name='appointments')
+    appointment_date = models.DateField()
+    patient_name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.patient_name} - {self.doctor} on {self.appointment_date}"
+
